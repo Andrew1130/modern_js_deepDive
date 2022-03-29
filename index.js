@@ -1,15 +1,11 @@
-// var obj = {
-//   'name' : 'Lee',
-//   'sayHi' : function(){
-//     console.log('hi! '+this.name);
-//   }
-// }
-
-var obj = {
-  'name' : 'Lee',
-  sayHi() {
-    console.log('hi! '+this.name);
-  }
+function add (a = 0, b = 0, c = 0) {
+  // a = a || 0
+  // b = b || 0
+  // c = c || 0
+  return a + b + c;
 }
 
-obj.sayHi();
+console.log(add(1,2,3))
+console.log(add(1,2))
+console.log(add(1))
+console.log(add())

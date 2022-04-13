@@ -215,6 +215,12 @@ console.log(Object) //* ƒ Object() { [native code] }
 console.log(mynote_02.constructor === Fn_06) //* true
 //* constructor 프로퍼티가 생성자 함수를 가리킨다.
 console.log(mynote_02.constructor === Object) //* false
+
+
+//? 추가 : 19-45와의 비교
+console.log(Fn_06.prototype) //* {constructor: ƒ, OwnNote: ƒ}
+console.log(Object.getPrototypeOf(mynote_02)) //* {constructor: ƒ, OwnNote: ƒ}
+// 별도의 처리 없이도 Fn_06.prototype과 Object.getPrototypeOf(mynote_02)는 동일
  
  
 

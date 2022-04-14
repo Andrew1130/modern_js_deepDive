@@ -166,6 +166,38 @@ console.log(obj_05)
 console.log(obj_05.name)
 console.log(Object.getPrototypeOf(obj_05)) //* {constructor: ƒ}
 console.log(Fn_05.prototype) //* {constructor: ƒ}
+console.clear()
 
 
-// 19-52
+// 19-52 : Object.prototype의 빌트인 메서드 사용 : 직접 호출 (1)
+const obj_06 = { "name":"Ju won Lee" }
+console.log(Object.getPrototypeOf(obj_06))
+//* {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+console.log(Object.getOwnPropertyDescriptor(obj_06, "name")) 
+//* {value: 'Ju won Lee', writable: true, enumerable: true, configurable: true}
+console.log(obj_06.hasOwnProperty("name")) //* true
+console.log(obj_06.propertyIsEnumerable("name")) //* true
+
+
+// 19-53 : Object.prototype의 빌트인 메서드 사용 : 직접 호출 (2)
+//* 프로토타입이 null인 객체, 즉 프로토타입 체인의 종점에 위치하는 객체를 생성
+const obj_07 = Object.create(null)
+obj_07.a = 1;
+
+console.log(Object.getPrototypeOf(obj_07)) //* null
+// console.log(obj_07.hasOwnProperty("name")) //! Uncaught TypeError: obj_07.hasOwnProperty is not a function
+// console.log(obj_07.propertyIsEnumerable("name")) //! Uncaught TypeError: obj_07.propertyIsEnumerable is not a function
+//* obj_07은 프로토타입 체인의 종점에 위치하는 객체이기 때문에
+//* Object.prototype을 상속받지 못하여 
+//* Object.prototype의 빌트인 메서드를 직접 사용하려 하면 위와 같은 에러가 발생한다.
+console.clear()
+
+
+// 19-54 : Object.prototype의 빌트인 메서드 사용 : 간접 호출
+//* 프로토타입이 null인 객체 생성
+const obj_08 = Object.create(null)
+obj_08.a = 1;
+
+//* Object.prototype의 빌트인 메서드를 간접 호출
+console.log(Object.prototype.hasOwnProperty.call(obj_08, 'a')) //* true
+console.log(Object.prototype.propertyIsEnumerable.call(obj_08, 'a')) //* true

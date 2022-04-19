@@ -227,5 +227,5 @@ console.log(isNaN({})); //* true ({} -> NaN)
 //* date
 console.log(isNaN(new Date())); //* false: (new Date() -> Number)
 console.log(isNaN(new Date().toString())); //* true (String -> NaN)
-console.clear()
+console.clear() 
 
